@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage ("Clone") {
+            steps {
+                echo "cloning stage"
+            }
+        }
+        
+        stage ("Parallel Build Stage") {
+            parallel {
+                stage ("build") {
+                    steps {
+                        echo "build stage"
+                    }
+                }
+                stage ("Test") {
+                    steps {
+                        echo "Test stage"
+                    }
+                }
+            }
+        }
+        stage ("Deploy") {
+            
+                steps {
+                    echo "Deploy stage"
+                }
+            
+        }
+    }
+}
